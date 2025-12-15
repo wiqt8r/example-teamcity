@@ -1,6 +1,7 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.maven
+import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -34,8 +35,12 @@ project {
 object Build : BuildType({
     name = "Build"
 
+    maxRunningBuildsPerBranch = "*:1"
+
     vcs {
         root(DslContext.settingsRoot)
+
+        branchFilter = "+:*"
     }
 
     steps {
@@ -58,6 +63,11 @@ object Build : BuildType({
             }
             goals = "clean deploy"
             userSettingsSelection = "nexus-settings"
+        }
+    }
+
+    triggers {
+        vcs {
         }
     }
 
