@@ -35,6 +35,8 @@ project {
 object Build : BuildType({
     name = "Build"
 
+    maxRunningBuildsPerBranch = "*:1"
+
     vcs {
         root(DslContext.settingsRoot)
 
