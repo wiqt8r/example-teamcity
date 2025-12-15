@@ -1,0 +1,9 @@
+<settings>
+  <servers>
+    <server>
+      <id>nexus</id>
+      <username>maven-deployer</username>
+      <password>Bogus7791</password>
+    </server>
+  </servers>
+</settings>
